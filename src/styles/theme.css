@@ -1,0 +1,268 @@
+:root {
+  /* ===== 国风配色 ===== */
+  --paper: #f5efe0;          /* 宣纸米 */
+  --paper-deep: #ece2cb;     /* 旧宣纸 */
+  --ink-deep: #1a1614;       /* 墨黑 */
+  --ink-soft: #5b5249;       /* 淡墨 */
+  --ink-10: rgba(26, 22, 20, 0.1);
+  --ink-20: rgba(26, 22, 20, 0.2);
+  --ink-40: rgba(26, 22, 20, 0.4);
+  --ink-60: rgba(26, 22, 20, 0.6);
+  --vermilion: #b03a2e;      /* 朱砂 */
+  --vermilion-light: #cf5a48;
+  --teal-dark: #4a5d57;      /* 黛青 */
+  --teal-mid: #6d8a7e;
+  --gold: #c9a063;           /* 鎏金 */
+  --gold-light: #e0c48c;
+  --cinnabar: #bd3a2c;       /* 朱砂印章红 */
+
+  /* ===== 字体 ===== */
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'SimSun', 'STFangsong', 'FangSong', serif;
+  --font-kai: 'KaiTi', 'STKaiti', 'Kaiti SC', 'Noto Serif SC', serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+
+  /* ===== 布局 ===== */
+  --radius: 4px;
+  --shadow-ink: 0 2px 10px rgba(26, 22, 20, 0.12);
+  --shadow-raising: 0 6px 24px rgba(26, 22, 20, 0.18);
+
+  /* 水墨滚动条 */
+  scrollbar-color: var(--teal-mid) var(--paper);
+  scrollbar-width: thin;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+
+body {
+  font-family: var(--font-serif);
+  color: var(--ink-deep);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--teal-dark);
+}
+
+.imgink {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* ===== 通用国风组件 ===== */
+.gf-btn {
+  font-family: var(--font-serif);
+  letter-spacing: 3px;
+  padding: 10px 28px;
+  border: 1px solid var(--vermilion);
+  color: var(--paper);
+  background: var(--vermilion);
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.25s ease;
+}
+.gf-btn:hover {
+  background: transparent;
+  color: var(--vermilion);
+  box-shadow: inset 0 0 0 1px var(--vermilion);
+}
+.gf-btn.ghost {
+  background: transparent;
+  color: var(--vermilion);
+}
+.gf-btn.ghost:hover {
+  background: var(--vermilion);
+  color: var(--paper);
+}
+
+.gf-title {
+  font-family: var(--font-kai);
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--vermilion);
+}
+.gf-sub {
+  color: var(--ink-soft);
+  letter-spacing: 2px;
+}
+
+/* 印章式 logo */
+.gf-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-kai);
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--cinnabar);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px var(--paper), 0 2px 6px rgba(26, 22, 20, 0.25);
+  transform: rotate(-2deg);
+}
+
+/* ===== 页面骨架 ===== */
+.gf-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.gf-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 48px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink-20);
+}
+.gf-section-title .zh {
+  font-family: var(--font-kai);
+  font-size: 26px;
+  letter-spacing: 6px;
+  color: var(--vermilion);
+}
+.gf-section-title .en {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.gf-card {
+  background: rgba(245, 239, 224, 0.65);
+  border: 1px solid var(--ink-20);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-ink);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.gf-card:hover {
+  box-shadow: var(--shadow-raising);
+}
+
+.gf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border: 1px solid var(--teal-mid);
+  color: var(--teal-dark);
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gf-chip:hover,
+.gf-chip.on {
+  background: var(--teal-dark);
+  color: var(--paper);
+}
+
+.gf-caption {
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.gf-note {
+  background: rgba(201, 160, 99, 0.12);
+  border-left: 3px solid var(--gold);
+  padding: 12px 16px;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.gf-quote {
+  font-family: var(--font-kai);
+  color: var(--ink-soft);
+  letter-spacing: 2px;
+  line-height: 2;
+}
+
+/* ===== 步骤条 ===== */
+.gf-stepbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+.gf-stepbar .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-40);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.gf-stepbar .dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-40);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-kai);
+  font-size: 15px;
+}
+.gf-stepbar .line {
+  flex: 0 0 48px;
+  height: 1px;
+  background: var(--ink-20);
+  margin-bottom: 26px;
+}
+.gf-stepbar .step.on {
+  color: var(--vermilion);
+}
+.gf-stepbar .step.on .dot {
+  border-color: var(--vermilion);
+  color: var(--paper);
+  background: var(--vermilion);
+}
+.gf-stepbar .step.done .dot {
+  border-color: var(--teal-dark);
+  color: var(--teal-dark);
+}
+
+/* ===== 结果分级 ===== */
+.gf-level {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 3px;
+  font-family: var(--font-kai);
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+.gf-level.high {
+  color: var(--paper);
+  background: var(--vermilion);
+}
+.gf-level.mid {
+  color: var(--teal-dark);
+  border: 1px solid var(--teal-dark);
+}
+.gf-level.low {
+  color: var(--ink-soft);
+  border: 1px solid var(--ink-40);
+}
+
+.gf-recommend-tag {
+  font-family: var(--font-kai);
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin: 0 0 8px;
+}
